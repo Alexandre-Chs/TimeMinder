@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "TimeMinder",
+    "description": "TimeMinder is a Chrome extension designed to help you maximize your productivity by optimizing your time and boosting your concentration.",
+    "version": "1.0.0",
+    "action": { "default_popup": "index.html" },
+    "content_scripts": [
+      {
+        "js": ["src/content.tsx"],
+        "matches": ["https://www.google.com/*"]
+      }
+    ]
+  }

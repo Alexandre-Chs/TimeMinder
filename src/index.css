@@ -1,0 +1,6 @@
+#crx-root {
+  position: fixed;
+  top: 3rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
