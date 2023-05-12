@@ -1,6 +1,10 @@
 #crx-root {
   position: fixed;
-  top: 3rem;
-  left: 50%;
-  transform: translate(-50%, 0);
+  height: 90%;
+  width: 60px;
+  right: 15px;
+  top: 0;
+  z-index: 9999;
+  transform: translateY(6%);
+  margin-left: 10px;
 }
