@@ -1,24 +1,13 @@
-.sidebar {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-.firstIcone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: blue;
-}
-
-/* BUTTON */
-.button-sidebar {
+.timeminder .container-button-sidebar {
   position: fixed;
   top: 50%;
-  left: 55px;
+  right: -100px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+
+.timeminder .mouseOutsideScreen {
+  right: -65px;
 }

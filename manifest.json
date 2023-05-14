@@ -7,7 +7,7 @@
     "content_scripts": [
       {
         "js": ["src/content.tsx"],
-        "matches": ["https://www.google.com/*"]
+        "matches": ["https://*/*"]
       }
     ]
   }

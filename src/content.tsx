@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 
 const root = document.createElement("div");
-root.id = "crx-root";
+root.classList.add("timeminder");
 document.body.appendChild(root);
 
 ReactDOM.createRoot(root).render(

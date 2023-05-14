@@ -1,15 +1,19 @@
+import Triangle from "../assets/Triangle";
 import "../styles/ButtonOpenSidebar.css";
 import { MouseEventHandler } from "../types/SidebarTypes";
-import { ReactComponent as Triangle } from "../assets/triangle.svg";
 
 const ButtonSidebar = ({
   handleOpenSidebar,
+  mouseOnRightScreen,
+  isOpen,
 }: {
   handleOpenSidebar: MouseEventHandler;
+  mouseOnRightScreen: boolean;
+  isOpen: boolean;
 }) => {
   return (
-    <div className="button-sidebar" onClick={handleOpenSidebar}>
-      <Triangle />
+    <div onClick={handleOpenSidebar}>
+      <Triangle mouseOnRightScreen={mouseOnRightScreen} isOpen={isOpen} />
     </div>
   );
 };
