@@ -1,5 +1,6 @@
 import "../styles/Sidebar.css";
 import { MouseEventHandler } from "../types/SidebarTypes";
+import CloseButton from "./CloseButton";
 import FocusMode from "./FocusMode/FocusMode";
 
 const Sidebar = ({
@@ -16,6 +17,7 @@ const Sidebar = ({
       }
     >
       <FocusMode />
+      <CloseButton />
     </div>
   );
 };
