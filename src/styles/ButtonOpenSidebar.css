@@ -1,4 +1,4 @@
-.timeminder .container-button-sidebar {
+.timeminder .timeminder-container-button-sidebar {
   position: fixed;
   top: 50%;
   right: -100px;
@@ -8,6 +8,6 @@
   transition: all 500ms ease;
 }
 
-.timeminder .mouseOutsideScreen {
+.timeminder .timeminder-mouseOutsideScreen {
   right: -65px;
 }

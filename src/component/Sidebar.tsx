@@ -10,7 +10,11 @@ const Sidebar = ({
   isOpen: boolean;
 }) => {
   return (
-    <div className={isOpen ? "sidebar active" : "sidebar"}>
+    <div
+      className={
+        isOpen ? "timeminder-sidebar timeminder-active" : "timeminder-sidebar"
+      }
+    >
       <FocusMode />
     </div>
   );

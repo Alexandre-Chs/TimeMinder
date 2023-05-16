@@ -11,8 +11,8 @@ const Triangle = ({
     <div
       className={
         mouseOnRightScreen && !isOpen
-          ? "container-button-sidebar mouseOutsideScreen"
-          : "container-button-sidebar"
+          ? "timeminder-container-button-sidebar timeminder-mouseOutsideScreen"
+          : "timeminder-container-button-sidebar"
       }
     >
       <svg

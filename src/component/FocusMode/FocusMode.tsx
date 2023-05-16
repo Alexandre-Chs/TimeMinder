@@ -16,7 +16,11 @@ const FocusMode = () => {
 
   return (
     <div
-      className={isFocus ? "focusIcon focusIconActive" : "focusIcon"}
+      className={
+        isFocus
+          ? "timeminder-focusIcon timeminder-focusIconActive"
+          : "timeminder-focusIcon"
+      }
       onClick={handleFocus}
     >
       <RiFocus2Line size={"2.5em"} />

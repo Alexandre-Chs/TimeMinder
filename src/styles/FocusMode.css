@@ -1,4 +1,4 @@
-.timeminder .focusIcon {
+.timeminder .timeminder-focusIcon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.timeminder .focusIconActive {
+.timeminder .timeminder-focusIconActive {
   animation: pulse 2s infinite;
   background-color: #a50d0d;
 }

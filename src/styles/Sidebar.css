@@ -1,4 +1,4 @@
-.timeminder .sidebar {
+.timeminder .timeminder-sidebar {
   position: fixed;
   top: 48px;
   right: 10px;
@@ -15,6 +15,6 @@
   flex-direction: column;
   padding-top: 15px;
 }
-.timeminder .sidebar.active {
+.timeminder .timeminder-sidebar.timeminder-active {
   opacity: 1;
 }
