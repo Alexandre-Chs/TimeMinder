@@ -1,0 +1,7 @@
+.delete div {
+  display: none;
+}
+
+.tab.active {
+  background-color: red !important;
+}

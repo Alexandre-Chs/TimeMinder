@@ -1,7 +1,6 @@
 import "../styles/Sidebar.css";
 import { MouseEventHandler } from "../types/SidebarTypes";
-import { BsRocketTakeoff } from "react-icons/bs";
-import { CgClose } from "react-icons/cg";
+import FocusMode from "./FocusMode/FocusMode";
 
 const Sidebar = ({
   handleOpenSidebar,
@@ -12,7 +11,7 @@ const Sidebar = ({
 }) => {
   return (
     <div className={isOpen ? "sidebar active" : "sidebar"}>
-
+      <FocusMode />
     </div>
   );
 };

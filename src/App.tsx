@@ -7,7 +7,6 @@ function App() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [isMouseNearRightEdge, setIsMouseNearRightEdge] = useState(false);
 
-  console.log(openSidebar);
   const handleOpenSidebar = () => {
     setOpenSidebar((current) => !current);
   };
