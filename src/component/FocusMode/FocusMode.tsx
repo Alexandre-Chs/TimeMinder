@@ -1,4 +1,4 @@
-import "../../styles/FocusMode.css";
+import "../../styles/Buttons/FocusMode.css";
 import { RiFocus2Line } from "react-icons/ri";
 import { useState, useEffect } from "react";
 

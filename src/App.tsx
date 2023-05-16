@@ -57,9 +57,7 @@ function App() {
         isOpen={openSidebar}
       />
 
-      {openSidebar ? (
-        <Sidebar handleOpenSidebar={handleOpenSidebar} isOpen={openSidebar} />
-      ) : null}
+      {openSidebar ? <Sidebar isOpen={openSidebar} /> : null}
     </>
   );
 }
