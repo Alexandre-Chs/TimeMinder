@@ -23,7 +23,7 @@ const FocusMode = () => {
       }
       onClick={handleFocus}
     >
-      <RiFocus2Line size={"2.5em"} />
+      <RiFocus2Line size={"2em"} />
     </div>
   );
 };

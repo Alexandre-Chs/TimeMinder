@@ -2,14 +2,21 @@ import "./styles/App.css";
 import { useState, useEffect } from "react";
 import ButtonSidebar from "./component/ButtonSidebar";
 import Sidebar from "./component/Sidebar";
+import { SidebarProvider, useSidebarContext } from "./context/SidebarContext";
+
+function AppWithContext() {
+  return (
+    <SidebarProvider>
+      <App />
+    </SidebarProvider>
+  );
+}
 
 function App() {
-  const [openSidebar, setOpenSidebar] = useState(false);
   const [isMouseNearRightEdge, setIsMouseNearRightEdge] = useState(false);
 
-  const handleOpenSidebar = () => {
-    setOpenSidebar((current) => !current);
-  };
+  const { openSidebar, handleOpenSidebar } = useSidebarContext();
+  console.log(openSidebar);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -62,4 +69,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppWithContext;

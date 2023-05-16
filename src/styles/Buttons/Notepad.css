@@ -1,0 +1,12 @@
+.timeminder .timeminder-notepadIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #1e5f74;
+  position: relative;
+  margin-top: 15px;
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import "../styles/Sidebar.css";
 import CloseButton from "./CloseButton";
 import FocusMode from "./FocusMode/FocusMode";
+import Notepad from "./NotePad/Notepad";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
   return (
@@ -10,6 +11,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
       }
     >
       <FocusMode />
+      <Notepad />
       <CloseButton />
     </div>
   );
