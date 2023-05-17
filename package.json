@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.2",
+    "@use-gesture/react": "^10.2.26",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.8.0",

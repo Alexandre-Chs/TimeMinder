@@ -1,19 +1,12 @@
 import Triangle from "../assets/Triangle";
+import { useSidebarContext } from "../context/SidebarContext";
 import "../styles/ButtonOpenSidebar.css";
-import { MouseEventHandler } from "../types/SidebarTypes";
 
-const ButtonSidebar = ({
-  handleOpenSidebar,
-  mouseOnRightScreen,
-  isOpen,
-}: {
-  handleOpenSidebar: MouseEventHandler;
-  mouseOnRightScreen: boolean;
-  isOpen: boolean;
-}) => {
+const ButtonSidebar = () => {
+  const { handleOpenSidebar } = useSidebarContext();
   return (
     <div onClick={handleOpenSidebar}>
-      <Triangle mouseOnRightScreen={mouseOnRightScreen} isOpen={isOpen} />
+      <Triangle />
     </div>
   );
 };

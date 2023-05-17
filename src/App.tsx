@@ -1,12 +1,8 @@
 import "./styles/App.css";
-import { useState, useEffect } from "react";
 import ButtonSidebar from "./component/ButtonSidebar";
 import Sidebar from "./component/Sidebar";
 import { SidebarProvider, useSidebarContext } from "./context/SidebarContext";
-import {
-  MouseProvider,
-  useMouseRightEdge,
-} from "./context/MouseRightEdgeContext";
+import { MouseProvider } from "./context/MouseRightEdgeContext";
 
 function AppWithContext() {
   return (
@@ -19,16 +15,10 @@ function AppWithContext() {
 }
 
 function App() {
-  const { openSidebar, handleOpenSidebar } = useSidebarContext();
-  const { isMouseNearRightEdge } = useMouseRightEdge();
-
+  const { openSidebar } = useSidebarContext();
   return (
     <>
-      <ButtonSidebar
-        handleOpenSidebar={handleOpenSidebar}
-        mouseOnRightScreen={isMouseNearRightEdge}
-        isOpen={openSidebar}
-      />
+      <ButtonSidebar />
 
       {openSidebar ? <Sidebar isOpen={openSidebar} /> : null}
     </>

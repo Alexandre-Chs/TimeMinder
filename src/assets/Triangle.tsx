@@ -1,16 +1,15 @@
+import { useMouseRightEdge } from "../context/MouseRightEdgeContext";
+import { useSidebarContext } from "../context/SidebarContext";
 import "../styles/ButtonOpenSidebar.css";
 
-const Triangle = ({
-  mouseOnRightScreen,
-  isOpen,
-}: {
-  mouseOnRightScreen: boolean;
-  isOpen: boolean;
-}) => {
+const Triangle = () => {
+  const { isMouseNearRightEdge } = useMouseRightEdge();
+  const { openSidebar } = useSidebarContext();
+  
   return (
     <div
       className={
-        mouseOnRightScreen && !isOpen
+        isMouseNearRightEdge && !openSidebar
           ? "timeminder-container-button-sidebar timeminder-mouseOutsideScreen"
           : "timeminder-container-button-sidebar"
       }

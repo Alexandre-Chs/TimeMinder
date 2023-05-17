@@ -8,7 +8,7 @@ import {
 import { useSidebarContext } from "./SidebarContext";
 
 type typeMouseContextType = {
-  isMouseNearRightEdge: React.Dispatch<React.SetStateAction<boolean>>;
+  isMouseNearRightEdge: boolean;
 };
 
 type MouseProviderProps = {
@@ -28,10 +28,9 @@ export const useMouseRightEdge = () => {
 export const MouseProvider = ({ children }: MouseProviderProps) => {
   const [isMouseNearRightEdge, setIsMouseNearRightEdge] = useState(false);
   const { openSidebar } = useSidebarContext();
-  console.log(openSidebar);
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       if (!openSidebar) {
         const { clientX } = event;
         const widthScreen = window.innerWidth;

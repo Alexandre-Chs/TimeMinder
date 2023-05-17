@@ -1,4 +1,3 @@
-import React from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import "../styles/Buttons/CloseButton.css";
 import { useSidebarContext } from "../context/SidebarContext";
