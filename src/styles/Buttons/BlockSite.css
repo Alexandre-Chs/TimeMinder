@@ -1,4 +1,4 @@
-.timeminder .timeminder-notepadIcon {
+.timeminder .timeminder-BlockSite {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,14 +9,4 @@
   position: relative;
   margin-top: 15px;
   cursor: pointer;
-}
-
-.timeminder .notification {
-  position: absolute;
-  bottom: 3px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: red;
 }

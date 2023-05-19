@@ -19,7 +19,6 @@ function App() {
   return (
     <>
       <ButtonSidebar />
-
       {openSidebar ? <Sidebar isOpen={openSidebar} /> : null}
     </>
   );
