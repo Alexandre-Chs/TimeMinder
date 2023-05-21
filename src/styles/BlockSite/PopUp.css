@@ -25,6 +25,8 @@
 .timeminder .timeminder-title_popup h1 {
   font-weight: 600;
   font-size: 26px;
+  margin: 0;
+  color: black;
 }
 
 .timeminder-contentAddUrls {
@@ -39,6 +41,8 @@
 
 .timeminder-customUrls h2 {
   font-size: 15px;
+  margin: 0;
+  color: black;
 }
 
 input[type="text"] {
@@ -76,6 +80,8 @@ input[type="text"] {
   padding-bottom: 5px;
   font-size: 14px;
   font-weight: bold;
+  margin: 0;
+  color: black;
 }
 
 .timeminder-blockedElement {
@@ -93,6 +99,7 @@ input[type="text"] {
   border: none;
   cursor: pointer;
   font-weight: bold;
+  color: black;
 }
 
 .timeminder-buttonBlockSite button {
@@ -121,4 +128,5 @@ input[type="text"] {
   font-size: 14px;
   color: black;
   text-decoration: dotted;
+  margin: 0;
 }
