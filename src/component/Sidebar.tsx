@@ -3,6 +3,7 @@ import BlockSite from "./BlockSite/BlockSite";
 import CloseButton from "./CloseButton";
 import FocusMode from "./FocusMode/FocusMode";
 import Notepad from "./NotePad/Notepad";
+import Timer from "./Timer/Timer";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
   return (
@@ -14,6 +15,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
       <FocusMode />
       <Notepad />
       <BlockSite />
+      <Timer />
       <CloseButton />
     </div>
   );
