@@ -1,6 +1,5 @@
 .timeminder .timeminder-timerPopup {
   width: 500px;
-  height: 600px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(0, 0, 0, 0.171);
   border-radius: 5px;
@@ -10,4 +9,20 @@
   color: black;
   font-size: 12px;
   font-family: "Inter", sans-serif;
+}
+
+.timeminder-timerContent {
+  height: 250px;
+}
+
+.timeminder-todolistContent {
+  background-color: aqua;
+}
+
+.timeminder-containerTimer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

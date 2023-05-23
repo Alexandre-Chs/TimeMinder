@@ -1,0 +1,29 @@
+.timeminder-countdownContent {
+  margin-top: 2rem;
+  color: black;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.timeminder-countdownInput {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100px;
+}
+
+.timeminder-countdownInput input {
+  margin-right: 1rem;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0rem 0.5rem;
+  border-radius: 5px;
+}
