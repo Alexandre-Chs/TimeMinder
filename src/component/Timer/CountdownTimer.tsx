@@ -37,6 +37,7 @@ export default function CountdownTimer() {
 
     if (hours === 0 && minutes === 0 && seconds === 0 && milliseconds === 1) {
       setShowEndScreen({ ...showEndScreen, show: true });
+      resetTimer();
     }
 
     return () => {
@@ -48,6 +49,7 @@ export default function CountdownTimer() {
   const startTimer = () => {
     if (hours !== 0 || minutes !== 0 || seconds !== 0 || milliseconds !== 0) {
       setIsRunning(true);
+      setShowEndScreen({ ...showEndScreen, show: false });
     } else {
       window.alert("Add time");
     }
@@ -59,6 +61,7 @@ export default function CountdownTimer() {
 
   const stopTimer = () => {
     resetTimer();
+    setShowEndScreen({ ...showEndScreen, show: false });
   };
 
   const resetTimer = () => {
@@ -81,6 +84,17 @@ export default function CountdownTimer() {
     setHours(e.target.value);
   };
 
+  useEffect(() => {
+    if (isRunning) {
+      chrome.runtime.sendMessage({
+        message: "startTimer",
+        hours: hours,
+        minutes: minutes,
+      });
+    }
+  }, [minutes, hours]);
+
+  console.log(hours);
   return (
     <>
       <div className="timeminder-containerTimer">

@@ -71,4 +71,42 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
     chrome.tabs.onUpdated.removeListener(blockSiteListener);
     isBlockingEnabled = false;
   }
+
+  if (data.message === "startTimer") {
+    const minutes = Number(data.minutes) + 1;
+    const hours = data.hours;
+    console.log(minutes);
+    console.log(hours);
+    if (hours > 0 && hours < 10) {
+      if (minutes >= 10) {
+        chrome.action.setBadgeText({
+          text: `0${hours.toString()}:${minutes.toString()}`,
+        });
+      } else {
+        chrome.action.setBadgeText({
+          text: `0${hours.toString()}:0${minutes.toString()}`,
+        });
+      }
+    } else if (hours > 0 && hours > 10) {
+      if (minutes >= 10) {
+        chrome.action.setBadgeText({
+          text: `0${hours.toString()}:${minutes.toString()}`,
+        });
+      } else {
+        chrome.action.setBadgeText({
+          text: `0${hours.toString()}:0${minutes.toString()}`,
+        });
+      }
+    } else {
+      if (minutes < 10) {
+        chrome.action.setBadgeText({
+          text: `00:0${minutes.toString()}`,
+        });
+      } else {
+        chrome.action.setBadgeText({
+          text: `00:${minutes.toString()}`,
+        });
+      }
+    }
+  }
 });
