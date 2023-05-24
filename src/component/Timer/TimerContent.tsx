@@ -13,7 +13,7 @@ const TimerContent = () => {
       <div className="timeminder-timerIcon" onClick={handleClick}>
         <MdOutlineTimer size={"2em"} />
       </div>
-      {isTimerOpen ? <TimerPopup /> : null}
+      {isTimerOpen ? <TimerPopup isTimerOpen={isTimerOpen} /> : null}
     </>
   );
 };

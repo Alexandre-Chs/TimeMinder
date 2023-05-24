@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import "../../styles/Timer/TimerPopup.css";
-export default function CountdownTimer() {
+
+export default function CountdownTimer({
+  isTimerOpen,
+}: {
+  isTimerOpen: boolean;
+}) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -38,6 +43,9 @@ export default function CountdownTimer() {
     if (hours === 0 && minutes === 0 && seconds === 0 && milliseconds === 1) {
       setShowEndScreen({ ...showEndScreen, show: true });
       resetTimer();
+      chrome.runtime.sendMessage({
+        message: "stopTimer",
+      });
     }
 
     return () => {
@@ -62,6 +70,9 @@ export default function CountdownTimer() {
   const stopTimer = () => {
     resetTimer();
     setShowEndScreen({ ...showEndScreen, show: false });
+    chrome.runtime.sendMessage({
+      message: "stopTimer",
+    });
   };
 
   const resetTimer = () => {
@@ -71,17 +82,40 @@ export default function CountdownTimer() {
     setMinutes(0);
     setHours(0);
   };
+
   //Handlers
-  const changeSeconds = (e) => {
-    setSeconds(e.target.value);
+  const valideInput = (value: string): boolean | undefined => {
+    const regex = /[0-9]+/;
+    const test = regex.test(value);
+    if (test === true && value.length <= 2) {
+      return test;
+    } else {
+      return;
+    }
   };
 
-  const changeMinutes = (e) => {
-    setMinutes(e.target.value);
+  const changeSeconds = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const validSeconds: boolean | undefined = valideInput(e.target.value);
+    if (validSeconds || e.target.value === "") {
+      if (Number(e.target.value) >= 60) {
+        e.target.value = "0";
+      }
+      setSeconds(Number(e.target.value));
+    }
   };
 
-  const changeHours = (e) => {
-    setHours(e.target.value);
+  const changeMinutes = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const validMinutes: boolean | undefined = valideInput(e.target.value);
+    if (validMinutes || e.target.value === "") {
+      setMinutes(Number(e.target.value));
+    }
+  };
+
+  const changeHours = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const validHours: boolean | undefined = valideInput(e.target.value);
+    if (validHours || e.target.value === "") {
+      setHours(Number(e.target.value));
+    }
   };
 
   useEffect(() => {
@@ -91,10 +125,26 @@ export default function CountdownTimer() {
         hours: hours,
         minutes: minutes,
       });
-    }
-  }, [minutes, hours]);
 
-  console.log(hours);
+      chrome.storage.local
+        .set({
+          ["timerHoursStorage"]: hours,
+          ["timerMinutesStorage"]: minutes,
+          ["timerSecondsStorage"]: seconds,
+        })
+        .then(() => {
+          console.log(seconds);
+        });
+    }
+  }, [minutes, hours, seconds]);
+
+  useEffect(() => {
+    chrome.storage.local.get("timerSecondsStorage", (result) => {
+      console.log(result);
+      setSeconds(result.timerSecondsStorage);
+    });
+  }, [isTimerOpen]);
+
   return (
     <>
       <div className="timeminder-containerTimer">

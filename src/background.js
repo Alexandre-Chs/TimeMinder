@@ -109,4 +109,10 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
       }
     }
   }
+
+  if (data.message === "stopTimer") {
+    chrome.action.setBadgeText({
+      text: "00:00",
+    });
+  }
 });

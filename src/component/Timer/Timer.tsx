@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/Timer/CountdownTimer.css";
 
 export default function Timer({
@@ -9,24 +8,41 @@ export default function Timer({
   changeHours,
   changeMinutes,
   changeSeconds,
+}: {
+  milliseconds: number;
+  seconds: number;
+  minutes: number;
+  hours: number;
+  changeHours: React.ChangeEventHandler<HTMLInputElement>;
+  changeMinutes: React.ChangeEventHandler<HTMLInputElement>;
+  changeSeconds: React.ChangeEventHandler<HTMLInputElement>;
 }) {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const value = e.target.value;
+    if (value.length > 0 && Number(value) < 60) {
+      return;
+    } else {
+      e.target.value = "0";
+    }
+  };
+
   return (
     <div className="timeminder-countdownContent">
       <div className="timeminder-countdownInput">
         <label>hh</label>
-        <input value={hours} onChange={changeHours} />
+        <input onBlur={handleBlur} value={hours} onChange={changeHours} />
       </div>
       <div className="timeminder-countdownInput">
         <label>mm</label>
-        <input value={minutes} onChange={changeMinutes} />
+        <input onBlur={handleBlur} value={minutes} onChange={changeMinutes} />
       </div>
       <div className="timeminder-countdownInput">
         <label>ss</label>
-        <input value={seconds} onChange={changeSeconds} />
+        <input onBlur={handleBlur} value={seconds} onChange={changeSeconds} />
       </div>
       <div className="timeminder-countdownInput">
         <label>ms</label>
-        <input value={milliseconds} />
+        <input value={milliseconds} readOnly />
       </div>
     </div>
   );
