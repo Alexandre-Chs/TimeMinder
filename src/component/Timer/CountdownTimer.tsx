@@ -3,13 +3,12 @@ import Timer from "./Timer";
 import "../../styles/Timer/TimerPopup.css";
 import { calculateTotalMilliseconds } from "../../utils/CalculateToMilliseconds";
 import { calculateMsToTime } from "../../utils/CalculateMsToTime";
+import sound from "../../assets/sound/ding.mp3";
 
 export default function CountdownTimer({
   isTimerOpen,
-  timeBetweenClone,
 }: {
   isTimerOpen: boolean;
-  timeBetweenClone: object;
 }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -26,32 +25,32 @@ export default function CountdownTimer({
 
   useEffect(() => {
     let interval: number;
-    if (isRunning) {
-      interval = setInterval(() => {
-        if (milliseconds > 0) {
-          setMilliseconds(milliseconds - 1);
-        } else if (seconds > 0) {
-          setSeconds(seconds - 1);
-          setMilliseconds(99);
-        } else if (minutes > 0) {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-          setMilliseconds(99);
-        } else if (hours > 0) {
-          setHours(hours - 1);
-          setMinutes(59);
-          setSeconds(59);
-          setMilliseconds(99);
-        }
-      }, 10);
-    }
+    let remainingTime: number =
+      hours * 3600000 + minutes * 60000 + seconds * 1000 + milliseconds;
 
-    if (hours === 0 && minutes === 0 && seconds === 0 && milliseconds === 1) {
-      setShowEndScreen({ ...showEndScreen, show: true });
-      resetTimer();
-      chrome.runtime.sendMessage({
-        message: "stopTimer",
-      });
+    if (isRunning && remainingTime > 0) {
+      interval = setInterval(() => {
+        remainingTime -= 10;
+        if (remainingTime <= 0) {
+          remainingTime = 0;
+          clearInterval(interval);
+          setShowEndScreen({ ...showEndScreen, show: true });
+          resetTimer();
+          chrome.runtime.sendMessage({
+            message: "stopTimer",
+          });
+        }
+
+        const updatedHours = Math.floor(remainingTime / 3600000);
+        const updatedMinutes = Math.floor((remainingTime % 3600000) / 60000);
+        const updatedSeconds = Math.floor((remainingTime % 60000) / 1000);
+        const updatedMilliseconds = remainingTime % 1000;
+
+        setHours(updatedHours);
+        setMinutes(updatedMinutes);
+        setSeconds(updatedSeconds);
+        setMilliseconds(updatedMilliseconds);
+      }, 10);
     }
 
     return () => {
@@ -125,6 +124,10 @@ export default function CountdownTimer({
             totalMilliseconds
         );
       });
+
+    chrome.runtime.sendMessage({
+      message: "pauseTimer",
+    });
   };
 
   const stopTimer = () => {
@@ -190,13 +193,19 @@ export default function CountdownTimer({
 
   useEffect(() => {
     if (isRunning) {
-      chrome.runtime.sendMessage({
-        message: "startTimer",
+      const totalMilliseconds = calculateTotalMilliseconds({
         hours: hours,
         minutes: minutes,
+        seconds: seconds,
+        milliseconds: milliseconds,
+      });
+
+      chrome.runtime.sendMessage({
+        message: "startTimer",
+        timeRemaining: totalMilliseconds,
       });
     }
-  }, [minutes, hours, seconds]);
+  }, [isRunning]);
 
   useEffect(() => {
     chrome.storage.local.get(
@@ -219,6 +228,7 @@ export default function CountdownTimer({
           setHours(msToChrono.hours);
           setMinutes(msToChrono.minutes);
           setSeconds(msToChrono.seconds);
+          setMilliseconds(msToChrono.milliseconds);
           setIsRunning(true);
         }
 
@@ -227,10 +237,20 @@ export default function CountdownTimer({
           setHours(timerWhenPaused.hours);
           setMinutes(timerWhenPaused.minutes);
           setSeconds(timerWhenPaused.seconds);
+          setMilliseconds(timerWhenPaused.milliseconds);
         }
       }
     );
   }, [isTimerOpen, isPause]);
+
+  // if (showEndScreen.show === true) {
+  //   const audioContext = new AudioContext();
+  //   const audioElement = new Audio(sound);
+  //   const source = audioContext.createMediaElementSource(audioElement);
+  //   source.connect(audioContext.destination);
+  //   audioElement.play();
+  //   console.log("play");
+  // }
 
   return (
     <>
@@ -247,6 +267,7 @@ export default function CountdownTimer({
         />
       </div>
       <br />
+      <audio controls src={sound}></audio>
 
       {!isRunning && <button onClick={startTimer}>PLAY</button>}
 

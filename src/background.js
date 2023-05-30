@@ -1,3 +1,5 @@
+let interval = null;
+
 chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
   let queryOptions = { active: true, lastFocusedWindow: true };
   let tabs = await chrome.tabs.query(queryOptions);
@@ -73,40 +75,58 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
   }
 
   if (data.message === "startTimer") {
-    const minutes = Number(data.minutes) + 1;
-    const hours = data.hours;
-    console.log(minutes);
-    console.log(hours);
-    if (hours > 0 && hours < 10) {
-      if (minutes >= 10) {
-        chrome.action.setBadgeText({
-          text: `0${hours.toString()}:${minutes.toString()}`,
-        });
-      } else {
-        chrome.action.setBadgeText({
-          text: `0${hours.toString()}:0${minutes.toString()}`,
-        });
-      }
-    } else if (hours > 0 && hours > 10) {
-      if (minutes >= 10) {
-        chrome.action.setBadgeText({
-          text: `0${hours.toString()}:${minutes.toString()}`,
-        });
-      } else {
-        chrome.action.setBadgeText({
-          text: `0${hours.toString()}:0${minutes.toString()}`,
-        });
-      }
-    } else {
-      if (minutes < 10) {
-        chrome.action.setBadgeText({
-          text: `00:0${minutes.toString()}`,
-        });
-      } else {
-        chrome.action.setBadgeText({
-          text: `00:${minutes.toString()}`,
-        });
-      }
+    if (!interval) {
+      let msRemaining = data.timeRemaining;
+      interval = setInterval(() => {
+        msRemaining = msRemaining - 1000;
+        console.log(msRemaining);
+        const updateTimer = calculateMsToTime(msRemaining);
+        const minutes = updateTimer.minutes + 1;
+        const hours = updateTimer.hours;
+        if (hours > 0 && hours < 10) {
+          if (minutes >= 10) {
+            chrome.action.setBadgeText({
+              text: `0${hours.toString()}:${minutes.toString()}`,
+            });
+          } else {
+            chrome.action.setBadgeText({
+              text: `0${hours.toString()}:0${minutes.toString()}`,
+            });
+          }
+        } else if (hours > 0 && hours > 10) {
+          if (minutes >= 10) {
+            chrome.action.setBadgeText({
+              text: `0${hours.toString()}:${minutes.toString()}`,
+            });
+          } else {
+            chrome.action.setBadgeText({
+              text: `0${hours.toString()}:0${minutes.toString()}`,
+            });
+          }
+        } else {
+          if (minutes < 10) {
+            chrome.action.setBadgeText({
+              text: `00:0${minutes.toString()}`,
+            });
+          } else {
+            chrome.action.setBadgeText({
+              text: `00:${minutes.toString()}`,
+            });
+          }
+        }
+
+        if (msRemaining === 0 || msRemaining <= 0) {
+          clearInterval(interval);
+          msRemaining = 0;
+          interval = null;
+        }
+      }, 1000);
+    }
+  } else if (data.message === "pauseTimer") {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+      console.log("PAUSE INTERVAL");
     }
   }
 
@@ -116,3 +136,12 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
     });
   }
 });
+
+const calculateMsToTime = (totalMilliseconds) => {
+  const hours = Math.floor(totalMilliseconds / (1000 * 60 * 60));
+  const minutes = Math.floor((totalMilliseconds / (1000 * 60)) % 60);
+  return {
+    hours,
+    minutes,
+  };
+};

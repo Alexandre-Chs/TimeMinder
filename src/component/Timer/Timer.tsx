@@ -40,10 +40,6 @@ export default function Timer({
         <label>ss</label>
         <input onBlur={handleBlur} value={seconds} onChange={changeSeconds} />
       </div>
-      <div className="timeminder-countdownInput">
-        <label>ms</label>
-        <input value={milliseconds} readOnly />
-      </div>
     </div>
   );
 }

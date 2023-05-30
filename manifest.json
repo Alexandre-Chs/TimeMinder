@@ -18,6 +18,6 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "permissions": ["activeTab", "scripting", "storage", "tabs", "action"],
+  "permissions": ["activeTab", "scripting", "storage", "tabs", "offscreen"],
   "host_permissions": ["https://*/*"]
 }
