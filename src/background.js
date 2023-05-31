@@ -116,6 +116,17 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
         }
 
         if (msRemaining === 0 || msRemaining <= 0) {
+          chrome.tabs.query(
+            { active: true, currentWindow: true },
+            function (tabs) {
+              chrome.tabs.executeScript(tabs[0].id, {
+                code: `
+                const audio = new Audio(chrome.runtime.getURL('./forest.wav'));
+                audio.play();
+              `,
+              });
+            }
+          );
           clearInterval(interval);
           msRemaining = 0;
           interval = null;

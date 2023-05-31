@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Timer from "./Timer";
 import "../../styles/Timer/TimerPopup.css";
 import { calculateTotalMilliseconds } from "../../utils/CalculateToMilliseconds";
 import { calculateMsToTime } from "../../utils/CalculateMsToTime";
-import sound from "../../assets/sound/ding.mp3";
+
+import sound from "../../assets/sound/dong.mp3";
 
 export default function CountdownTimer({
   isTimerOpen,
@@ -242,16 +243,6 @@ export default function CountdownTimer({
       }
     );
   }, [isTimerOpen, isPause]);
-
-  // if (showEndScreen.show === true) {
-  //   const audioContext = new AudioContext();
-  //   const audioElement = new Audio(sound);
-  //   const source = audioContext.createMediaElementSource(audioElement);
-  //   source.connect(audioContext.destination);
-  //   audioElement.play();
-  //   console.log("play");
-  // }
-
   return (
     <>
       <div className="timeminder-containerTimer">
@@ -267,8 +258,6 @@ export default function CountdownTimer({
         />
       </div>
       <br />
-      <audio controls src={sound}></audio>
-
       {!isRunning && <button onClick={startTimer}>PLAY</button>}
 
       {isRunning && <button onClick={pauseTimer}>PAUSE</button>}
