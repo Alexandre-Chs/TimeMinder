@@ -29,17 +29,30 @@ export default function Timer({
   return (
     <div className="timeminder-countdownContent">
       <div className="timeminder-countdownInput">
-        <input onBlur={handleBlur} value={hours} onChange={changeHours} />
+        <input
+          className="timeminder-inputTimer"
+          onBlur={handleBlur}
+          value={hours}
+          onChange={changeHours}
+        />
         <label>HOURS</label>
       </div>
-      <div className="timeminder-separatorTimer">:</div>
       <div className="timeminder-countdownInput">
-        <input onBlur={handleBlur} value={minutes} onChange={changeMinutes} />
+        <input
+          className="timeminder-inputTimer"
+          onBlur={handleBlur}
+          value={minutes}
+          onChange={changeMinutes}
+        />
         <label>MINUTES</label>
       </div>
-      <div className="timeminder-separatorTimer">:</div>
       <div className="timeminder-countdownInput">
-        <input onBlur={handleBlur} value={seconds} onChange={changeSeconds} />
+        <input
+          className="timeminder-inputTimer"
+          onBlur={handleBlur}
+          value={seconds}
+          onChange={changeSeconds}
+        />
         <label>SECONDS</label>
       </div>
     </div>

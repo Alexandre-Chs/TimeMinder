@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import "../../styles/Timer/TimerPopup.css";
 import { calculateTotalMilliseconds } from "../../utils/CalculateToMilliseconds";
@@ -167,12 +167,17 @@ export default function CountdownTimer({
   };
 
   const changeSeconds = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const validSeconds: boolean | undefined = valideInput(e.target.value);
-    if (validSeconds || e.target.value === "") {
+    const valueInput = e.target.value;
+    const validSeconds: boolean | undefined = valideInput(
+      valueInput.split("")[1]
+    );
+    if (validSeconds) {
       if (Number(e.target.value) >= 60) {
         e.target.value = "0";
       }
       setSeconds(Number(e.target.value));
+    } else {
+      e.target.value = "NON";
     }
   };
 
@@ -256,10 +261,31 @@ export default function CountdownTimer({
         />
       </div>
       <br />
-      {!isRunning && <button onClick={startTimer}>PLAY</button>}
+      <div className="timeminder-containerButtonTimer">
+        {!isRunning && (
+          <button
+            className="timeminder-buttonTimer timeminder-playButtonTimer"
+            onClick={startTimer}
+          >
+            PLAY
+          </button>
+        )}
 
-      {isRunning && <button onClick={pauseTimer}>PAUSE</button>}
-      <button onClick={stopTimer}>STOP</button>
+        {isRunning && (
+          <button
+            className="timeminder-buttonTimer timeminder-pauseButtonTimer"
+            onClick={pauseTimer}
+          >
+            PAUSE
+          </button>
+        )}
+        <button
+          className="timeminder-buttonTimer timeminder-stopButtonTimer"
+          onClick={stopTimer}
+        >
+          STOP
+        </button>
+      </div>
     </>
   );
 }
