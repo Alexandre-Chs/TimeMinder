@@ -11,12 +11,12 @@
 .timeminder-countdownInput {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 100px;
 }
 
 .timeminder-countdownInput input {
-  margin-right: 1rem;
   color: black;
   background-color: white;
   outline: none;
@@ -24,6 +24,11 @@
   font-size: 3.5rem;
   font-weight: 600;
   text-align: center;
-  padding: 0rem 0.5rem;
   border-radius: 5px;
+  width: 100%;
+}
+.timeminder-separatorTimer {
+  width: 20px;
+  height: 50px;
+  font-size: 3.5rem;
 }

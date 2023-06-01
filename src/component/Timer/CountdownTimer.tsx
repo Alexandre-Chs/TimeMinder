@@ -4,8 +4,6 @@ import "../../styles/Timer/TimerPopup.css";
 import { calculateTotalMilliseconds } from "../../utils/CalculateToMilliseconds";
 import { calculateMsToTime } from "../../utils/CalculateMsToTime";
 
-import sound from "../../assets/sound/dong.mp3";
-
 export default function CountdownTimer({
   isTimerOpen,
 }: {

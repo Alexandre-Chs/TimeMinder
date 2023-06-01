@@ -1,6 +1,6 @@
 .timeminder .timeminder-timerPopup {
   width: 500px;
-  background-color: rgb(255, 255, 255);
+  background-image: url("../../assets/svg/waves.svg");
   border: 1px solid rgba(0, 0, 0, 0.171);
   border-radius: 5px;
   position: absolute;
@@ -12,15 +12,11 @@
 }
 
 .timeminder-timerContent {
-  height: 250px;
-}
-
-.timeminder-todolistContent {
-  background-color: aqua;
+  height: 350px;
+  width: 400px;
 }
 
 .timeminder-containerTimer {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

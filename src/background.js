@@ -116,17 +116,17 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
         }
 
         if (msRemaining === 0 || msRemaining <= 0) {
-          chrome.tabs.query(
-            { active: true, currentWindow: true },
-            function (tabs) {
-              chrome.tabs.executeScript(tabs[0].id, {
-                code: `
-                const audio = new Audio(chrome.runtime.getURL('./forest.wav'));
-                audio.play();
-              `,
-              });
-            }
-          );
+          const options = {
+            type: "basic",
+            title: "Timer Completed !",
+            message: "Your timer has finished. Take a well-deserved break! 🥳",
+            iconUrl: "../icon128.png",
+            requireInteraction: true,
+          };
+
+          chrome.notifications.create("", options, (notificationId) => {
+            console.log("Notifications:", notificationId);
+          });
           clearInterval(interval);
           msRemaining = 0;
           interval = null;
@@ -142,6 +142,9 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
   }
 
   if (data.message === "stopTimer") {
+    console.log("STOP TIMER");
+    clearInterval(interval);
+    interval = null;
     chrome.action.setBadgeText({
       text: "00:00",
     });

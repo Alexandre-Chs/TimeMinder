@@ -7,7 +7,6 @@ const TimerPopup = ({ isTimerOpen }: { isTimerOpen: boolean }) => {
       <div className="timeminder-timerContent">
         <CountdownTimer isTimerOpen={isTimerOpen} />
       </div>
-      <div className="timeminder-todolistContent">todolist ici</div>
     </div>
   );
 };
