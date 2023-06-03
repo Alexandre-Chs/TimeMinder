@@ -58,7 +58,8 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
         const domain = parsedUrl.hostname;
 
         if (allUrlsBlocked.includes(domain)) {
-          const redirectUrl = "https://findmeastreamer.com";
+          const redirectUrl =
+            "https://www.youtube.com/watch?v=l60MnDJklnM&ab_channel=ArnavSharan";
           chrome.tabs.update(tabId, { url: redirectUrl });
         }
       }
@@ -130,6 +131,9 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
           clearInterval(interval);
           msRemaining = 0;
           interval = null;
+          chrome.action.setBadgeText({
+            text: "00:00",
+          });
         }
       }, 1000);
     }

@@ -1,3 +1,5 @@
+import "../../styles/BlockSite/PopUp.css";
+
 const CurrentUrl = () => {
   const currentUrl = window.location.href;
   const parsedUrl = new URL(currentUrl);
@@ -6,7 +8,7 @@ const CurrentUrl = () => {
   return (
     <>
       <div className="timeminder-currentUrl">
-        <p>Current URL : {domain}</p>
+        <p className="timeminder-BlockShowCurrentURL">Current URL : {domain}</p>
       </div>
     </>
   );

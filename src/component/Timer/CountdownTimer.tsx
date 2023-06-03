@@ -16,12 +16,6 @@ export default function CountdownTimer({
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [isPause, setIsPause] = useState(false);
 
-  //END of time
-  const [showEndScreen, setShowEndScreen] = useState({
-    show: false,
-    message: "Timer countdown",
-  });
-
   useEffect(() => {
     let interval: number;
     let remainingTime: number =
@@ -33,7 +27,6 @@ export default function CountdownTimer({
         if (remainingTime <= 0) {
           remainingTime = 0;
           clearInterval(interval);
-          setShowEndScreen({ ...showEndScreen, show: true });
           resetTimer();
           chrome.runtime.sendMessage({
             message: "stopTimer",
@@ -55,22 +48,12 @@ export default function CountdownTimer({
     return () => {
       clearInterval(interval);
     };
-  }, [
-    milliseconds,
-    seconds,
-    minutes,
-    hours,
-    isRunning,
-    showEndScreen.show,
-    isTimerOpen,
-  ]);
+  }, [milliseconds, seconds, minutes, hours, isRunning, isTimerOpen]);
 
   //Start / Pause / Stop
   const startTimer = () => {
     if (hours !== 0 || minutes !== 0 || seconds !== 0 || milliseconds !== 0) {
       setIsRunning(true);
-      setShowEndScreen({ ...showEndScreen, show: false });
-
       const time = new Date().getTime();
       const totalMilliseconds = calculateTotalMilliseconds({
         hours: hours,
@@ -131,7 +114,6 @@ export default function CountdownTimer({
 
   const stopTimer = () => {
     resetTimer();
-    setShowEndScreen({ ...showEndScreen, show: false });
     chrome.runtime.sendMessage({
       message: "stopTimer",
     });
@@ -167,17 +149,16 @@ export default function CountdownTimer({
   };
 
   const changeSeconds = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const valueInput = e.target.value;
-    const validSeconds: boolean | undefined = valideInput(
-      valueInput.split("")[1]
-    );
+    const validSeconds: boolean | undefined = valideInput(e.target.value);
+    console.log(validSeconds);
     if (validSeconds) {
       if (Number(e.target.value) >= 60) {
         e.target.value = "0";
       }
       setSeconds(Number(e.target.value));
     } else {
-      e.target.value = "NON";
+      console.log("c false");
+      e.target.value = "0";
     }
   };
 
@@ -249,7 +230,6 @@ export default function CountdownTimer({
   return (
     <>
       <div className="timeminder-containerTimer">
-        {showEndScreen.show && <h1>{showEndScreen.message}</h1>}
         <Timer
           milliseconds={milliseconds}
           seconds={seconds}

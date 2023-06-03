@@ -32,7 +32,7 @@ const Notepad = () => {
   return (
     <>
       <div className="timeminder-notepadIcon" onClick={handleOpenNodepad}>
-        <BiNotepad size={"2rem"} />
+        <BiNotepad size={"2rem"} className="timeminder-notepadIconSidebar" />
         {notification ? <div className="notification"></div> : null}
       </div>
       {openNotepad ? <FloattingTextarea isOpen={openNotepad} /> : null}

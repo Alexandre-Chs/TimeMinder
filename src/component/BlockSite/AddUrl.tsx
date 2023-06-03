@@ -34,14 +34,21 @@ const AddUrl = ({
   return (
     <>
       <div className="timeminder-customUrls">
-        <h2>Customizable blocked sites. Add yours !</h2>
+        <h2 className="timmeinder-BlockH2Title">
+          Customizable blocked sites. Add yours !
+        </h2>
         <div className="timeminder-contentAddUrls">
           <form
             onSubmit={handleUrlsSubmit}
             id="myForm"
             className="timeminder-myForm"
           >
-            <input type="text" name="text" placeholder="www.google.com" />
+            <input
+              className="timemidner-BlockInputUrl"
+              type="text"
+              name="text"
+              placeholder="www.google.com"
+            />
             <input type="submit" className="timeminder-textAdd" value="Add" />
             {error ? <p>{error}</p> : null}
           </form>

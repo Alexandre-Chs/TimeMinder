@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.timeminder-timerIcon svg {
-  /* not center dunno why */
-  transform: translateY(1px);
+.timeminder-timerIconSidebar {
+  height: 33px;
+  width: 33px;
 }

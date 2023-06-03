@@ -12,7 +12,8 @@
 .timeminder-floating-textarea {
   position: absolute;
   /* Margin-right because if i use left/top, resize for the textarea it's strange :'( */
-  margin-right: 327px;
+  left: -260px;
+  top: 10px;
   z-index: 32002;
 }
 
@@ -24,4 +25,5 @@
   border: black;
   font-size: 16px;
   font-family: "Inter", sans-serif;
+  resize: both;
 }

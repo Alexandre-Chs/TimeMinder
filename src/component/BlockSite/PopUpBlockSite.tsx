@@ -38,7 +38,7 @@ const PopUpBlockSite = () => {
   return (
     <div className="timeminder-popUp">
       <div className="timeminder-title_popup">
-        <h1>Site blocker</h1>
+        <h1 className="timeminder-BlockMainTitle">Site blocker</h1>
       </div>
       <AddUrl allUrls={allUrls} setAllUrls={setAllUrls} />
       <CurrentUrl />

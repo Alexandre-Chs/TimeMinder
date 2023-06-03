@@ -7,13 +7,17 @@
   border-radius: 10px;
   background-color: #1e5f74;
   position: relative;
-  margin-top: 15px;
   cursor: pointer;
 }
 
 .timeminder .timeminder-focusIconActive {
   animation: pulse 2s infinite;
   background-color: #a50d0d;
+}
+
+.timeminder-focusIconSidebar {
+  width: 35px;
+  height: 35px;
 }
 
 @keyframes pulse {

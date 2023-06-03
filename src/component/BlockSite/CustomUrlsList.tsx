@@ -1,4 +1,5 @@
 import React from "react";
+import { GrFormClose } from "react-icons/gr";
 
 const CustomUrlsList = ({
   allUrls,
@@ -17,12 +18,20 @@ const CustomUrlsList = ({
   return (
     <>
       <div className="timeminder-showUrlsBlock">
-        <p>Custom block list :</p>
-        <ul>
+        <p className="timeminder-BlockShowUrlsText">Custom block list :</p>
+        <ul className="timeminder-BlockListUL">
           {allUrls.map((url, index) => (
             <div key={index} className="timeminder-blockedElement">
               <li>{url}</li>
-              <button onClick={() => handleDelete(url)}>X</button>
+              <button
+                className="timeminder-BlockDeleteURLS"
+                onClick={() => handleDelete(url)}
+              >
+                <GrFormClose
+                  size={"2em"}
+                  className="timeminder-BlockDeleteIcon"
+                />
+              </button>
             </div>
           ))}
         </ul>

@@ -6,7 +6,11 @@ const CloseButton = () => {
   const { handleOpenSidebar } = useSidebarContext();
   return (
     <div className="timeminder-closeIcon">
-      <IoCloseSharp size={"2em"} onClick={handleOpenSidebar} />
+      <IoCloseSharp
+        size={"2em"}
+        className="timeminder-closeIconSidebar"
+        onClick={handleOpenSidebar}
+      />
     </div>
   );
 };

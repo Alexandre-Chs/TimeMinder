@@ -10,3 +10,8 @@
   margin-top: 15px;
   cursor: pointer;
 }
+
+.timeminder-closeIconSidebar {
+  height: 35px;
+  width: 35px;
+}

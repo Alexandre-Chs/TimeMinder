@@ -26,6 +26,10 @@ export default function Timer({
     }
   };
 
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    e.target.value = "";
+  };
+
   return (
     <div className="timeminder-countdownContent">
       <div className="timeminder-countdownInput">
@@ -34,8 +38,9 @@ export default function Timer({
           onBlur={handleBlur}
           value={hours}
           onChange={changeHours}
+          onFocus={handleFocus}
         />
-        <label>HOURS</label>
+        <label className="timeminder-countdownLabel">HOURS</label>
       </div>
       <div className="timeminder-countdownInput">
         <input
@@ -43,8 +48,9 @@ export default function Timer({
           onBlur={handleBlur}
           value={minutes}
           onChange={changeMinutes}
+          onFocus={handleFocus}
         />
-        <label>MINUTES</label>
+        <label className="timeminder-countdownLabel">MINUTES</label>
       </div>
       <div className="timeminder-countdownInput">
         <input
@@ -52,8 +58,9 @@ export default function Timer({
           onBlur={handleBlur}
           value={seconds}
           onChange={changeSeconds}
+          onFocus={handleFocus}
         />
-        <label>SECONDS</label>
+        <label className="timeminder-countdownLabel">SECONDS</label>
       </div>
     </div>
   );

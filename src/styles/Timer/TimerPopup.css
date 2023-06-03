@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 150px;
 }
 
 .timeminder-containerButtonTimer {
@@ -25,14 +26,19 @@
 }
 
 .timeminder-buttonTimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 30px;
   margin: 0.5rem;
   border: none;
   border-radius: 5px;
+  font-style: 3.5rem;
   font-weight: 600;
   letter-spacing: 3px;
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .timeminder-playButtonTimer {

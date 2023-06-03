@@ -26,7 +26,7 @@ const TimerContent = () => {
   return (
     <>
       <div className="timeminder-timerIcon" onClick={handleClick}>
-        <MdOutlineTimer size={"2em"} />
+        <MdOutlineTimer size={"2em"} className="timeminder-timerIconSidebar" />
       </div>
       {isTimerOpen ? <TimerPopup isTimerOpen={isTimerOpen} /> : null}
     </>
