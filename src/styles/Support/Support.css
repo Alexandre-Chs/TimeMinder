@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+.timeminder-SupportContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  height: 230px;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+}
+
+.timeminder-SupportTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 36px;
+}
+
+.timeminder-SupportButton {
+  margin-top: 1rem;
+  width: 90%;
+  height: 40px;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  animation: wiggle 4s 2s infinite;
+  border: none;
+  cursor: pointer;
+  background-color: #ffe433;
+  color: black;
+}
+
+@keyframes wiggle {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  15% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  30% {
+    transform: scale(1.15) rotate(-3deg);
+  }
+  35% {
+    transform: scale(1.15) rotate(2deg);
+  }
+  40% {
+    transform: scale(1.15) rotate(0);
+  }
+}
