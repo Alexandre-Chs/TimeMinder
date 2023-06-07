@@ -121,7 +121,7 @@ chrome.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
             type: "basic",
             title: "Timer Completed !",
             message: "Your timer has finished. Take a well-deserved break! 🥳",
-            iconUrl: "../icon128.png",
+            iconUrl: "../icon.png",
             requireInteraction: true,
           };
 

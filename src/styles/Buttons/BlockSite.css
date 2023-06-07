@@ -5,15 +5,15 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background-color: #0153ce;
+  background-color: #0066ff;
   position: relative;
   margin-top: 15px;
   cursor: pointer;
 }
 
 .timeminder-blockSiteIconSidebar {
-  height: 28px;
-  width: 28px;
+  height: 26px;
+  width: 26px;
 }
 
 .timeminder .timeminder-BlockSiteActive {

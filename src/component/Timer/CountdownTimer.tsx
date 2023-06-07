@@ -62,20 +62,11 @@ export default function CountdownTimer({
         milliseconds: milliseconds,
       });
 
-      chrome.storage.local
-        .set({
-          ["dateWhenStart"]: time,
-          ["totalMilliseconds"]: totalMilliseconds,
-          ["pause"]: false,
-        })
-        .then(() => {
-          console.log(
-            "L'heure du start : " +
-              time +
-              " et le total en ms :" +
-              totalMilliseconds
-          );
-        });
+      chrome.storage.local.set({
+        ["dateWhenStart"]: time,
+        ["totalMilliseconds"]: totalMilliseconds,
+        ["pause"]: false,
+      });
     } else {
       window.alert("Add time");
     }
@@ -92,20 +83,11 @@ export default function CountdownTimer({
       milliseconds: milliseconds,
     });
 
-    chrome.storage.local
-      .set({
-        ["dateWhenStart"]: time,
-        ["totalMilliseconds"]: totalMilliseconds,
-        ["pause"]: true,
-      })
-      .then(() => {
-        console.log(
-          "PAUSE : L'heure du start : " +
-            time +
-            " et le total en ms :" +
-            totalMilliseconds
-        );
-      });
+    chrome.storage.local.set({
+      ["dateWhenStart"]: time,
+      ["totalMilliseconds"]: totalMilliseconds,
+      ["pause"]: true,
+    });
 
     chrome.runtime.sendMessage({
       message: "pauseTimer",
@@ -150,14 +132,12 @@ export default function CountdownTimer({
 
   const changeSeconds = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const validSeconds: boolean | undefined = valideInput(e.target.value);
-    console.log(validSeconds);
     if (validSeconds) {
       if (Number(e.target.value) >= 60) {
         e.target.value = "0";
       }
       setSeconds(Number(e.target.value));
     } else {
-      console.log("c false");
       e.target.value = "0";
     }
   };

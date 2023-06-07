@@ -5,13 +5,13 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background-color: #0153ce;
+  background-color: #0066ff;
   position: relative;
   margin-top: 15px;
   cursor: pointer;
 }
 
 .timeminder-todoIconSidebar {
-  height: 27px;
-  width: 27px;
+  height: 25px;
+  width: 25px;
 }

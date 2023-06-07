@@ -19,9 +19,7 @@ const AddUrl = ({
         const key = "allUrlsBlocked";
         const storedUrls = result["allUrlsBlocked"];
         const updateUrls = [...storedUrls, submitValue];
-        chrome.storage.local.set({ [key]: updateUrls }).then(() => {
-          console.log("Value is set to " + updateUrls);
-        });
+        chrome.storage.local.set({ [key]: updateUrls });
       });
 
       document.getElementById("myForm").reset();
