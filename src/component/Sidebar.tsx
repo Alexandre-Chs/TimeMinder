@@ -14,7 +14,6 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
       }
     >
       <div>
-        <FocusMode />
         <Notepad />
         <BlockSite />
         <TimerContent />

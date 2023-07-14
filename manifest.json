@@ -18,6 +18,6 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "permissions": ["storage", "notifications", "scripting"],
+  "permissions": ["storage", "notifications"],
   "host_permissions": ["https://*/*"]
 }
